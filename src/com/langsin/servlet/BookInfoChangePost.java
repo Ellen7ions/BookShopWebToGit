@@ -1,6 +1,8 @@
 package com.langsin.servlet;
 
+import com.langsin.beans.Page;
 import com.langsin.service.BookService;
+import com.langsin.service.PageService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,6 +19,8 @@ public class BookInfoChangePost extends HttpServlet {
         String newleft = request.getParameter("newleft");
         String newprice = request.getParameter("newprice");
         new BookService().bookInfoChange(bookid, newleft, newprice);
+        Page page = (Page) request.getSession().getAttribute("pageNum");
+        request.getSession().setAttribute("pageNum", new PageService().loadPage(page.getPageNum()));
         request.getRequestDispatcher("./index.jsp").forward(request, response);
     }
 
