@@ -1,0 +1,10 @@
+
+.card {
+	width: 16.40625rem;
+	padding: 0.625rem;
+	margin-top: 0.825rem;
+}
+
+.card-columns {
+	column-count: 6;
+}

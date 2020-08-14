@@ -1,0 +1,22 @@
+.starter-template {
+	padding: 40px 15px;
+	text-align: center;
+}
+
+#cardouter {
+	margin-top: 90px;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.word-size {
+	font-family: sans-serif;
+	font-size: 20px;
+	font-weight: 400;
+}
+
+.more-sign {
+	text-align: center;
+}
