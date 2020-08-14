@@ -87,14 +87,14 @@
                             </button>
 
                             <%
-                                } else if (user.getPrivilege().equals("user")) {
+                            } else if (user.getPrivilege().equals("user")) {
                             %>
                             <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#buymodal${book.id}">
                                 加入购物车
                             </button>
                             <%
-                                } else if (user.getPrivilege().equals("admin")) {
+                            } else if (user.getPrivilege().equals("admin")) {
                             %>
                             <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#buymodal${book.id}">
@@ -117,11 +117,11 @@
                                         </div>
                                         <div class="modal-body">
                                             <%
-                                                if (session.getAttribute("user") == null) {
+                                                if (user == null) {
                                             %>
                                             <h3>请登录！</h3>
                                             <%
-                                            } else {
+                                            } else if (user.getPrivilege().equals("user")) {
                                             %>
                                             <form action="./AddToCartPost" method="post">
                                                 <div class="input-group mb-3">
@@ -135,6 +135,29 @@
                                                         <button class="btn btn-outline-secondary" type="submit">提交
                                                         </button>
                                                     </div>
+                                                </div>
+                                            </form>
+                                            <%
+                                            } else if (user.getPrivilege().equals("admin")) {
+                                            %>
+                                            <form action="./BookInfoChangePost" method="post">
+                                                <div class="input-group mb-3">
+                                                    <input name="bookid" type="text" class="form-control" placeholder=""
+                                                           aria-label="Username"
+                                                           aria-describedby="basic-addon1"
+                                                            value="${book.id}"
+                                                    style="display: none">
+                                                    <span class="input-group-text" id="basic-addon1">修改库存为：</span>
+                                                    <input name="newleft" type="text" class="form-control" placeholder=""
+                                                           aria-label="Username"
+                                                           aria-describedby="basic-addon1">
+                                                    <span class="input-group-text" id="basic-addon1">修改单价为：</span>
+                                                    <input name="newprice" type="text" class="form-control" placeholder=""
+                                                           aria-label="Username"
+                                                           aria-describedby="basic-addon1">
+                                                    <input type="submit" class="form-control" value="提交"
+                                                           aria-label="Username"
+                                                           aria-describedby="basic-addon1">
                                                 </div>
                                             </form>
                                             <%

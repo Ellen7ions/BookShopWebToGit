@@ -17,6 +17,13 @@ public class BookService {
         bookList = bookDao.getAll();
     }
 
+    public void bookInfoChange(String id, String left, String price) {
+        Book book = bookDao.query(id);
+        book.setLeft(Integer.parseInt(left));
+        book.setPrice(Double.parseDouble(price));
+        updateBook(book);
+    }
+
     public boolean buyBook(User user, String id, int amount) {
         Book book = bookDao.query(id);
         book.setLeft(book.getLeft() - amount);
