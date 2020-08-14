@@ -1,6 +1,3 @@
-<%@ page import="com.langsin.beans.Book" %>
-<%@ page import="java.util.List" %>
-<%@ page import="com.langsin.service.BookService" %>
 <%@ page import="com.langsin.service.PageService" %>
 <%@ page import="com.langsin.beans.Page" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
