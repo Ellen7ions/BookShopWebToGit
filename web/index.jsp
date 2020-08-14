@@ -77,10 +77,32 @@
                     <!-- Button trigger modal -->
                     <div class="container">
                         <div class="row justify-content-center">
+                            <%
+                                if (user == null) {
+                            %>
+
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#buymodal${book.id}"
+                                    style="visibility: hidden">
+                            </button>
+
+                            <%
+                                } else if (user.getPrivilege().equals("user")) {
+                            %>
                             <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#buymodal${book.id}">
                                 加入购物车
                             </button>
+                            <%
+                                } else if (user.getPrivilege().equals("admin")) {
+                            %>
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#buymodal${book.id}">
+                                修改书籍信息
+                            </button>
+                            <%
+                                }
+                            %>
 
                             <!-- Modal -->
                             <div class="modal fade" id="buymodal${book.id}" tabindex="-1" role="dialog"

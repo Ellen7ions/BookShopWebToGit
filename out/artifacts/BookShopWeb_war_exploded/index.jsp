@@ -12,7 +12,8 @@
     <meta charset="utf-8"/>
     <title>首页</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"
+    <link type="text/css" rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
           crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./css/index.css"/>
@@ -42,7 +43,7 @@
     </div>
     <%
         request.removeAttribute("successBuy");
-    } else if (request.getAttribute("failBuy") != null){
+    } else if (request.getAttribute("failBuy") != null) {
     %>
     <div class="alert alert-danger">
         <strong>购买失败！</strong>
@@ -76,9 +77,32 @@
                     <!-- Button trigger modal -->
                     <div class="container">
                         <div class="row justify-content-center">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#buymodal${book.id}">
+                            <%
+                                if (user == null) {
+                            %>
+
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#buymodal${book.id}"
+                                    style="visibility: hidden">
+                            </button>
+
+                            <%
+                                } else if (user.getPrivilege().equals("user")) {
+                            %>
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#buymodal${book.id}">
                                 加入购物车
                             </button>
+                            <%
+                                } else if (user.getPrivilege().equals("admin")) {
+                            %>
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#buymodal${book.id}">
+                                修改书籍信息
+                            </button>
+                            <%
+                                }
+                            %>
 
                             <!-- Modal -->
                             <div class="modal fade" id="buymodal${book.id}" tabindex="-1" role="dialog"
